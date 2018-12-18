@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Clock</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+  
+    <body>
+  
+        <div class="clock">
+            <div id="hours"></div>
+            <div id="minutes"></div>
+            <div id="seconds"></div>
+            <div class="three"></div>
+            <div class="six"></div>
+            <div class="nine"></div>
+            <div class="twelve"></div>
+            <div class="center"></div>
+        </div>
+  
+        <script>
+            function moveHands() {
+                //To get the current date from js engine
+    with (new Date()) {
+      h = ((getHours() / 12) * 360) + ((getMinutes() / 60) * 30); // 30 degrees hour
+      m = 6 * getMinutes(); // 6 degrees every minute
+      s = 6 * getSeconds(); // 6 degrees every second
+      // setting the rotate CSS attribute to those degree values -->
+      document.getElementById("seconds").style.cssText =
+        "-webkit-transform:rotate(" + s + "deg);";
+      document.getElementById("minutes").style.cssText =
+        "-webkit-transform:rotate(" + m + "deg);";
+      document.getElementById("hours").style.cssText =
+        "-webkit-transform:rotate(" + h + "deg);";
+  
+      setTimeout(moveHands, 1000); // calling the function every second
+    }
+  }
+  
+  window.onload = moveHands; // making sure the function starts on load of webpage
+  
+  
+        </script>
+    </body>  
+  
+    </html>
+  
+  
